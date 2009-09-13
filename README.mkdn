@@ -1,15 +1,16 @@
 # Where clause generator
 
-## Usage example</b>
+## Usage example
 
 ### Returning SQL
 
- sql = Where.new('x=?',5).and( Where.new('x=?',6).or('x=?',7)).to_s
- returns (x=5) and ( ( x=6 ) or ( x=7 ) ) 
+ `sql = Where.new('x=?',5).and( Where.new('x=?',6).or('x=?',7)).to_s`
+
+ #### returns (x=5) and ( ( x=6 ) or ( x=7 ) ) 
  
 ### Building a complicated where clause made easy
  
-` def get_search_query_string
+`def get_search_query_string
  
    where = Where.new
    where.and('users.first_name like ?', params[:search_first_name] + '%') unless params[:search_first_name].blank?
@@ -24,13 +25,16 @@
    where.to_s
  end
  
-User.find(:all, :conditions => get_search_query_string) `
+User.find(:all, :conditions => get_search_query_string)`
 
  
 ### Inline
   `User.find(:all, :conditions => Where.new('first_name like ?', 'Tim').and('last_name like ?', 'Harper') )`
-  Sweet chaining action!
+
+#### Sweet chaining action!
       
-## Author: Tim Harper ( "timseeharperATgmail.seeom".gsub("see", "c").gsub("AT", "@") )
-## Contributor: Thiago Pradi (http://github.com/tchandy)
+### Author: 
+Tim Harper ( "timseeharperATgmail.seeom".gsub("see", "c").gsub("AT", "@") )
+### Contributor: 
+Thiago Pradi (http://github.com/tchandy)
 
