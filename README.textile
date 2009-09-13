@@ -1,16 +1,20 @@
-# Where clause generator
+h1. Where clause generator
 
-## Usage example
+h2. Usage example
 
-### Returning SQL
+h4. Returning SQL
 
- `sql = Where.new('x=?',5).and( Where.new('x=?',6).or('x=?',7)).to_s`
+<pre><code>
+sql = Where.new('x=?',5).and( Where.new('x=?',6).or('x=?',7)).to_s`
+</pre></code>
 
- #### returns (x=5) and ( ( x=6 ) or ( x=7 ) ) 
+returns (x=5) and ( ( x=6 ) or ( x=7 ) ) 
  
-### Building a complicated where clause made easy
- 
-`def get_search_query_string
+
+h4. Building a complicated where clause made easy
+
+<pre><code> 
+def get_search_query_string
  
    where = Where.new
    where.and('users.first_name like ?', params[:search_first_name] + '%') unless params[:search_first_name].blank?
@@ -26,15 +30,22 @@
  end
  
 User.find(:all, :conditions => get_search_query_string)`
+</pre></code>
 
- 
-### Inline
-  `User.find(:all, :conditions => Where.new('first_name like ?', 'Tim').and('last_name like ?', 'Harper') )`
+h4. Inline
 
-#### Sweet chaining action!
+<pre><code>
+User.find(:all, :conditions => Where.new('first_name like ?', 'Tim').and('last_name like ?', 'Harper') )
+</pre></code>
+
+Sweet chaining action!
       
-### Author: 
+
+h3. Author: 
+
 Tim Harper ( "timseeharperATgmail.seeom".gsub("see", "c").gsub("AT", "@") )
-### Contributor: 
+
+h3. Contributor:
+ 
 Thiago Pradi (http://github.com/tchandy)
 
