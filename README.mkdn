@@ -1,5 +1,6 @@
 = Where clause generator
 == Author: Tim Harper ( "timseeharperATgmail.seeom".gsub("see", "c").gsub("AT", "@") )
+== Contributor: Thiago Pradi (http://github.com/tchandy)
 
 <b>Usage example</b>
 
