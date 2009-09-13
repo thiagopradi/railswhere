@@ -31,7 +31,6 @@
 #    User.find(:all, :conditions => Where.new('first_name like ?', 'Tim').and('last_name like ?', 'Harper') )
 #    # Sweet chaining action!
 
-
 class Where
   
   # Constructs a new where clause
@@ -124,6 +123,10 @@ class Where
   
   alias :to_sql :to_s
   
+  def scan(argument)
+    return to_s.scan(argument)
+  end
+  
   # Determines if any clauses have been added.
   # 
   #   where = Where.new
@@ -166,7 +169,7 @@ protected
       criteria = criteria.first if criteria.class==Array && criteria.length==1
         
       if criteria.class==Array   # if it's an array, sanitize it
-        @criteria = ActiveRecord::Base.send(:sanitize_sql, criteria)
+        @criteria = ActiveRecord::Base.send(:sanitize_sql, criteria, "")
       else
         @criteria = criteria.to_s   # otherwise, run to_s.  If it's a recursive Where clause, it will return the sql we need
       end

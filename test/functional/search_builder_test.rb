@@ -16,7 +16,7 @@ class SearchBuilderTest < Test::Unit::TestCase
   def test__search_builder_date_range__nil_values__shouldnt_append_anything
     @sb.range_on("users.created_at", :cast => :date)
     
-    assert_nil(@sb.to_sql)
+    assert_equal("", @sb.to_sql.to_s)
   end
   
   def test__like_search

@@ -110,4 +110,7 @@ class WhereTest < Test::Unit::TestCase
     assert_equal( "(x=1)", Where{|w| w & ["x=?", 1] }.to_s)
   end
   
+  def test__should_have_the_scan_method
+    assert_equal("(hi = '1')".scan(/hi/), Where.new {|w| w.and("hi = ?", "1")}.scan(/hi/))
+  end
 end
