@@ -2,7 +2,8 @@ h1. Where clause generator
 
 h2. Usage example
 
-h4. Returning SQL
+
+h3. Returning SQL
 
 <pre><code>
 sql = Where.new('x=?',5).and( Where.new('x=?',6).or('x=?',7)).to_s`
@@ -11,7 +12,7 @@ sql = Where.new('x=?',5).and( Where.new('x=?',6).or('x=?',7)).to_s`
 returns (x=5) and ( ( x=6 ) or ( x=7 ) ) 
  
 
-h4. Building a complicated where clause made easy
+h3. Building a complicated where clause made easy
 
 <pre><code> 
 def get_search_query_string
@@ -32,13 +33,13 @@ def get_search_query_string
 User.find(:all, :conditions => get_search_query_string)`
 </pre></code>
 
-h4. Inline
+h3. Inline
 
 <pre><code>
 User.find(:all, :conditions => Where.new('first_name like ?', 'Tim').and('last_name like ?', 'Harper') )
 </pre></code>
 
-Sweet chaining action!
+*Sweet chaining action!*
       
 
 h3. Author: 
